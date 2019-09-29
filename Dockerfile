@@ -1,9 +1,9 @@
 FROM alpine:latest
 
 ENV TINI_VERSION v0.18.0
-ENV TSDB_VERSION 2.3.1
-ENV HBASE_VERSION 1.4.4
-ENV GNUPLOT_VERSION 5.2.4
+ENV TSDB_VERSION 2.4.0
+ENV HBASE_VERSION 1.4.10
+ENV GNUPLOT_VERSION 5.2.7
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/bin/
 ENV ALPINE_PACKAGES "rsyslog bash openjdk8 make wget libgd libpng libjpeg libwebp libjpeg-turbo cairo pango lua"
@@ -45,7 +45,7 @@ RUN apk add --virtual builddeps \
   && rm -rf /opt/opentsdb/opentsdb-${TSDB_VERSION}
 
 RUN cd /tmp && \
-    wget https://datapacket.dl.sourceforge.net/project/gnuplot/gnuplot/${GNUPLOT_VERSION}/gnuplot-${GNUPLOT_VERSION}.tar.gz && \
+    wget https://nchc.dl.sourceforge.net/project/gnuplot/gnuplot/${GNUPLOT_VERSION}/gnuplot-${GNUPLOT_VERSION}.tar.gz && \
     tar xzf gnuplot-${GNUPLOT_VERSION}.tar.gz && \
     cd gnuplot-${GNUPLOT_VERSION} && \
     ./configure && \
